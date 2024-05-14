@@ -33,7 +33,7 @@ const Updatestudent = () => {
         //updating api
         axios.put(`http://localhost:4500/update-student/${params.id}`,students,{headers})
            .then((res) => setStudents(res.data))
-        //navigate("/Studentlist");
+        navigate("/Studentlist");
     }
     
 

@@ -47,15 +47,15 @@ app.put("/update-student/:id", (req, resp) => {
     const studentId = req.params.id
     console.log(studentId)
 
-    const sql = "UPDATE students SET name=?, email=? ,CNIC=?, cell_no=? ,myclass=?, roll_no=? where id=?";
-    const changes = [
-        req.body.name,
-        req.body.email,
-        req.body.CNIC,
-        req.body.cell_no,
-        req.body.myclass,
-        req.body.roll_no
-    ]
+    const sql = "UPDATE students SET ? where id=?";
+    const changes = [{
+        name:req.body.name,
+        email:req.body.email,
+      CNIC:  req.body.CNIC,
+     cell_no:   req.body.cell_no,
+      myclass:  req.body.myclass,
+       roll_no: req.body.roll_no
+}]
 
     con.query(sql, [...changes, studentId], (err, data) => {
         if (err) return resp.json(err);
