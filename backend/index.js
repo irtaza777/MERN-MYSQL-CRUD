@@ -42,10 +42,10 @@ app.get("/update-student/:id", (req, resp) => {
     })
 })
 app.put("/update-student/:id", (req, resp) => {
-    console.log("updates")
+    //console.log("updates")
 
     const studentId = req.params.id
-    console.log(studentId)
+    //console.log(studentId)
 
     const sql = "UPDATE students SET ? where id=?";
     const changes = [{
