@@ -4,6 +4,7 @@ import Addstudent from './components/Add-Student/Addstudent';
 import Studentlist from './components/Student-List/Studentlist';
 import Updatestudent from './components/Update-Student/Updatestudent';
 import Navbar from './components/Navbar/Navbar';
+import Userstatus from './components/User-Status/userstatus';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
     <Route path="/" element={<Addstudent/>} ></Route>
     <Route path="/Studentlist" element={<Studentlist/>} ></Route>
     <Route path="/updatestudent/:id" element={<Updatestudent/>} ></Route>
+    <Route path="/userstatus" element={<Userstatus/>} ></Route>
 
   </Routes>
   

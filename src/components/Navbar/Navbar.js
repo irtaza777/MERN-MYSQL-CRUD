@@ -14,7 +14,10 @@ const Navbar = () => {
 
           <Link to="/Studentlist">All Students</Link>
         </li>
-        
+          <li className="nav-item nav-link">        
+
+          <Link to="/userstatus">All Students status</Link>
+        </li>
     
       </ul>
     </nav>
