@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Addstudent from './components/Add-Student/Addstudent';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
-    </div>
+  
+  <Routes>
+    <Route path="/" element={<Addstudent/>} ></Route>
+  </Routes>
+  
+  
+   </div>
   );
 }
 
