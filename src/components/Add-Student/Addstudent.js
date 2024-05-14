@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Addstudent = () => {
 
@@ -11,6 +12,7 @@ const Addstudent = () => {
     const [cell_no, setCell_no] = useState('');
     const [myclass, setMyclass] = useState('');
     const [roll_no, setRollno] = useState('');
+const navigate=useNavigate();
     const addStudent=(e)=>{
         e.preventDefault();
         const data = {
@@ -27,6 +29,8 @@ const Addstudent = () => {
                  console.log(res.data)
                      ;
              })
+             navigate("/Studentlist");
+
     }
   
 
@@ -37,7 +41,7 @@ const Addstudent = () => {
             <h1>Add Student</h1>
 
             <Container>
-                <form>
+                <form onSubmit={addStudent}>
                     <br></br>
                     <div className="form-group">
                         <input type="TEXT" className="form-control" placeholder="name"
@@ -75,7 +79,7 @@ const Addstudent = () => {
 
                     </div>
                     <br></br>
-                    <button onClick={addStudent} type="submit" className="btn btn-success m-2">Add Student</button>
+                    <button  type="submit" className="btn btn-success m-2">Add Student</button>
 
                 </form>
             </Container>

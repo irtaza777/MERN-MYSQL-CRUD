@@ -1,4 +1,4 @@
-const con=require("./db/config");
+const con = require("./db/config");
 const express = require("express");
 const app = express();
 const cors = require("cors")
@@ -7,23 +7,69 @@ app.use(cors());
 
 
 app.post("/Add-Student", (req, resp) => {
-    console.log(con)
 
-const sql="INSERT INTO students(`name`,`email`,`CNIC`,`cell_no`,`myclass`,`roll_no`) VALUES(?)";
-const values=[
-    req.body.name,
-    req.body.email,
-    req.body.CNIC,
-    req.body.cell_no,
-    req.body.myclass,
-    req.body.roll_no
+    const sql = "INSERT INTO students(`name`,`email`,`CNIC`,`cell_no`,`myclass`,`roll_no`) VALUES(?)";
+    const values = [
+        req.body.name,
+        req.body.email,
+        req.body.CNIC,
+        req.body.cell_no,
+        req.body.myclass,
+        req.body.roll_no
 
-]
-con.query(sql,[values],(err,data)=>{
-    if(err) return resp.json(err);
-    return resp.json(data);
+    ]
+    con.query(sql, [values], (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
+
 })
 
+app.get("/Student-List", (req, resp) => {
+
+    const sql = "SELECT * from students";
+    con.query(sql, (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
+})
+app.get("/update-student/:id", (req, resp) => {
+    const studentId = req.params.id
+    const sql = "SELECT * from students where id=?";
+    con.query(sql, [studentId], (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
+})
+app.put("/update-student/:id", (req, resp) => {
+    console.log("updates")
+
+    const studentId = req.params.id
+    console.log(studentId)
+
+    const sql = "UPDATE students SET name=?, email=? ,CNIC=?, cell_no=? ,myclass=?, roll_no=? where id=?";
+    const changes = [
+        req.body.name,
+        req.body.email,
+        req.body.CNIC,
+        req.body.cell_no,
+        req.body.myclass,
+        req.body.roll_no
+    ]
+
+    con.query(sql, [...changes, studentId], (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
 })
 
+app.delete("/Delete-Student/:studentid", (req, resp) => {
+    const sql = "DELETE from students where id=?";
+    const studentId = req.params.studentid
+
+    con.query(sql, [studentId], (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
+})
 app.listen(4500);
