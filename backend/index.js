@@ -42,10 +42,10 @@ app.get("/update-student/:id", (req, resp) => {
     })
 })
 app.put("/update-student/:id", (req, resp) => {
-    console.log("updates")
+    //console.log("updates")
 
     const studentId = req.params.id
-    console.log(studentId)
+    //console.log(studentId)
 
     const sql = "UPDATE students SET ? where id=?";
     const changes = [{
@@ -68,6 +68,14 @@ app.delete("/Delete-Student/:studentid", (req, resp) => {
     const studentId = req.params.studentid
 
     con.query(sql, [studentId], (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
+})
+app.get("/userstatus", (req, resp) => {
+    //cross join
+    const sql = "SELECT * from students join student_status on students.id=student_status.id";
+    con.query(sql, (err, data) => {
         if (err) return resp.json(err);
         return resp.json(data);
     })
