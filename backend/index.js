@@ -74,8 +74,13 @@ app.delete("/Delete-Student/:studentid", (req, resp) => {
 })
 app.get("/userstatus", (req, resp) => {
     //cross join
-    const sql = "SELECT * from students join student_status on students.id=student_status.id";
-    con.query(sql, (err, data) => {
+   // const sql = "SELECT * from students join student_status on students.id=student_status.id";
+ //left join
+  // const sql = "SELECT students.id, name, status_id,status  from students left join student_status on students.id=student_status.id";
+  //const sql = "SELECT students.id, student_status.status_id, student_status.status  from students right join student_status on student_status.status_id=students.status_id";
+  const sql = "SELECT * from students join student_status on students.id=student_status.id join sports on student_status.id=sports.id ORDER BY sports.id";
+
+   con.query(sql, (err, data) => {
         if (err) return resp.json(err);
         return resp.json(data);
     })
