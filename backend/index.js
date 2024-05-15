@@ -72,4 +72,12 @@ app.delete("/Delete-Student/:studentid", (req, resp) => {
         return resp.json(data);
     })
 })
+app.get("/userstatus", (req, resp) => {
+    //cross join
+    const sql = "SELECT * from students join student_status on students.id=student_status.id";
+    con.query(sql, (err, data) => {
+        if (err) return resp.json(err);
+        return resp.json(data);
+    })
+})
 app.listen(4500);
