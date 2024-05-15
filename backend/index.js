@@ -77,7 +77,9 @@ app.get("/userstatus", (req, resp) => {
    // const sql = "SELECT * from students join student_status on students.id=student_status.id";
  //left join
   // const sql = "SELECT students.id, name, status_id,status  from students left join student_status on students.id=student_status.id";
+  //right join
   //const sql = "SELECT students.id, student_status.status_id, student_status.status  from students right join student_status on student_status.status_id=students.status_id";
+  //multiple table join(3)
   const sql = "SELECT * from students join student_status on students.id=student_status.id join sports on student_status.id=sports.id ORDER BY sports.id";
 
    con.query(sql, (err, data) => {
