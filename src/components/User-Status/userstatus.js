@@ -24,7 +24,7 @@ const Userstatus = () => {
 
     return (<div className="container" >
         <br></br>
-        <h3>Students</h3>
+        <h3>Joining three tables(students,student_status,sports)</h3>
         <Table responsive striped bordered hover>
             <thead>
                 <tr>
@@ -38,6 +38,9 @@ const Userstatus = () => {
                     <th>Student ROll_no</th>
                     <th>Status id</th>
                     <th>Student status</th>
+                    <th>Sports_id</th>
+
+                    <th>Sports name</th>
 
 
 
@@ -62,6 +65,9 @@ const Userstatus = () => {
                             <td>{item.roll_no}</td>
                             <td>{item.status_id}</td>
                             <td>{item.status}</td>
+                            <td>{item.student_sports_id}</td>
+
+                            <td>{item.sport_name}</td>
 
 
 
