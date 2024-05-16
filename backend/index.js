@@ -65,6 +65,7 @@ app.put("/update-student/:id", (req, resp) => {
 
 app.delete("/Delete-Student/:studentid", (req, resp) => {
     const sql = "DELETE from students where id=?";
+    
     const studentId = req.params.studentid
 
     con.query(sql, [studentId], (err, data) => {
